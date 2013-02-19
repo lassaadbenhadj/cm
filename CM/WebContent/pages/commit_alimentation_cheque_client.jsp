@@ -37,6 +37,10 @@ if (mifosCustomerId==0){
 else {
 		if (amount !=null) {
 			Double dblAmount = Double.parseDouble(request.getParameter("amountsent"));
+			if (dblAmount<=0){
+				response.sendRedirect("error_page.jsp?erreurMsg=AmountValidationError");
+			}
+			else {
 			Integer IntTypeAl = Integer.parseInt(typeAl);
 			Integer thisCaisseSentInt=caisseidi;
 			if (thisCaisseSentInt==0) {
@@ -48,6 +52,7 @@ else {
 			
 			dwcc.insertChequeClientIndb(0,userid,IntTypeAl,numpiece,dblAmount,dblabel,thisCaisseSentInt,thisDateSent,mifosCustomerId);
 			response.sendRedirect("main.jsp");
+			}
 		}
 }
 

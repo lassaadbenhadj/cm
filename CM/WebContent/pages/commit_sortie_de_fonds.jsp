@@ -27,6 +27,10 @@ String thisDateSent=request.getParameter("datetoSend_2");
 String thisCaisseSent=request.getParameter("caissesent_2");
 if (amount !=null) {
 	Double dblAmount = Double.parseDouble(request.getParameter("amountsent"));
+	if (dblAmount<=0){
+		response.sendRedirect("error_page.jsp?erreurMsg=AmountValidationError");
+	}
+	else {
 	Integer IntTypeAl = Integer.parseInt(typeAl);
 	Integer thisCaisseSentInt=caisseidi;
 	if (thisCaisseSentInt==0) {
@@ -38,6 +42,7 @@ if (amount !=null) {
 	communicatewithDb cwdb = new communicatewithDb();
 	cwdb.insertIndb(0,userid,IntTypeAl,numpiece,dblAmount,dblabel,thisCaisseSentInt,thisDateSent);
 	response.sendRedirect("main.jsp");
+	}
 }
 
 %>

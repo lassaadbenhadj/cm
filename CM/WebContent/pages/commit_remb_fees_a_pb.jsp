@@ -39,9 +39,14 @@ account_id=cwdb.getaccountID(globalaccountid);
 if (amount !=null) {
 	if (account_id!=0) {
 		Double dblAmount = Double.parseDouble(request.getParameter("amountsent"));
+		if (dblAmount<=0){
+			response.sendRedirect("error_page.jsp?erreurMsg=AmountValidationError");
+		}
+		else {
 		Integer IntTypeAl = Integer.parseInt(typeAl);
 		cwdb.insertIndb(account_id,userid,IntTypeAl,numpiece,dblAmount,dblabel,thisCaisseSentInt,thisDateSent);
 		response.sendRedirect("main.jsp");
+		}
 	}
 	else {
 		out.println("le code: " + globalaccountid + " est faux, prière de le vérifier");

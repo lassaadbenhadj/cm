@@ -34,10 +34,15 @@ if (thisDateSent==null) {
 
 if (amount !=null) {
 	Double dblAmount = Double.parseDouble(request.getParameter("amountsent"));
+	if (dblAmount<=0){
+		response.sendRedirect("error_page.jsp?erreurMsg=AmountValidationError");
+	}
+	else {
 	Integer IntTypeAl = Integer.parseInt(typeAl);
 	communicatewithDb cwdb = new communicatewithDb();
 	cwdb.insertIndb(0,userid,IntTypeAl,"_",dblAmount,"SPH",thisCaisseSentInt,thisDateSent);
 	response.sendRedirect("main.jsp");
+	}
 }
 
 %>

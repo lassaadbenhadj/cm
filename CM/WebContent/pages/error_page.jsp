@@ -16,6 +16,11 @@ if (cmmsg.equals("custidError")) {
 	out.println("<font color=red ><B>Le client introduit n'existe pas dans la base mifos, prière de vérifier le CIN </B></font>"); 
 
 }
+
+if (cmmsg.equals("AmountValidationError")) {
+	out.println("<font color=red ><B>Le montant saisi est invalide </B></font>"); 
+
+}
 %>
 <head>
 
