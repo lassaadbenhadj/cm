@@ -21,10 +21,9 @@ if(userid==null) {
 <%
 Integer caissier=Integer.parseInt(request.getParameter("caissiersent"));
 Integer caisse=Integer.parseInt(request.getParameter("caissesent"));
-String matricule=request.getParameter("matricule");
 
 addcashier cwdb = new addcashier();
-cwdb.insertcashier(caissier,caisse,userid,"00","00","23","59",0,matricule);
+cwdb.insertcashier(caissier,caisse,userid,"00","00","23","59",0);
 
 response.sendRedirect("admin_page.jsp");
 

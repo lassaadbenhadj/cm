@@ -11,7 +11,7 @@ import com.enda.caissemanager.connection.ConnectionBase;
 import com.enda.caissemanager.connection.LienBase;
 
 public class addcashier {
-	public void insertcashier(int cashier, int caisse, int cashier_maker, String HStart, String MStart, String HEnd, String MEnd, Integer UI, String mat) {
+	public void insertcashier(int cashier, int caisse, int cashier_maker, String HStart, String MStart, String HEnd, String MEnd, Integer UI) {
 		Statement statement = null;
 		Connection cnxal;
 		ConnectionBase TestCnxAl = new ConnectionBase();
@@ -57,7 +57,7 @@ public class addcashier {
 			  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 			  String date_id=dateFormat.format(date);
 			  
-		      String Sqlstr="INSERT INTO cm_caisse_users (CAISSE_ID,USER_ID,DATE_ID,DATETIME_START,DATETIME_END,CREATED_BY,CREATED_DATE,PAYROLL_ID) VALUES(" + caisse +"," + cashier + ",'" + date_id + "','" + date_start + "','" + date_end + "'," + cashier_maker + ",'" + date_id + "','" + mat + "')";
+		      String Sqlstr="INSERT INTO cm_caisse_users (CAISSE_ID,USER_ID,DATE_ID,DATETIME_START,DATETIME_END,CREATED_BY,CREATED_DATE) VALUES(" + caisse +"," + cashier + ",'" + date_id + "','" + date_start + "','" + date_end + "'," + cashier_maker + ",'" + date_id + "')";
 		      statement.executeUpdate(Sqlstr);
 		      cnxal.close();
 		      //check and move tansactions already entered in cm_trace
@@ -214,42 +214,5 @@ public class addcashier {
 				  System.out.println("Erreur Dans l'operation"+ e.getMessage()); 
 			   }
 		
-	}
-	
-	public String getPayrollID(Integer cashier) {
-		Statement statement = null;
-		Connection cnxal;
-		ResultSet rs = null;
-		String pId="";
-		ConnectionBase TestCnxAl = new ConnectionBase();
-		cnxal= TestCnxAl.getCnx();
-		
-		if (cnxal == null) 
-		{
-		    System.out.println("Connexion impossible : " + cnxal );
-		} 
-		
-		LienBase TestLienAl = new LienBase();
-		statement = TestLienAl.getLien(cnxal);
-		if (statement == null) {
-			System.out.println("Communication impossible : "+ statement );
-			  } 
-
-			   try
-			  {			  
-		      String Sqlstr="SELECT * FROM cm_caisse_users where LAST_ACTIVE=1 AND USER_ID=" + cashier;
-		      rs=statement.executeQuery(Sqlstr);
-		      	if (rs.next()){
-		      		pId= rs.getString("PAYROLL_ID");
-		      	}
-		      cnxal.close();
-		      
-			  }
-			  catch(Exception e)
-			  {
-				  System.out.println("Erreur Dans l'operation"+ e.getMessage()); 
-			   }
-		
-		return pId;
 	}
 }

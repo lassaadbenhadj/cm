@@ -27,8 +27,7 @@ String HFin=request.getParameter("HE");
 String MDebut=request.getParameter("MS");
 String MFin=request.getParameter("ME");
 addcashier cwdb = new addcashier();
-String mat=cwdb.getPayrollID(caissier);
-cwdb.insertcashier(caissier,caisse,userid,HDebut,MDebut,HFin,MFin,1,mat);
+cwdb.insertcashier(caissier,caisse,userid,HDebut,MDebut,HFin,MFin,1);
 
 response.sendRedirect("admin_page.jsp");
 

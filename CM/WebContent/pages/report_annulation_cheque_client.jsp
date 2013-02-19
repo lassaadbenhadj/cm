@@ -123,7 +123,8 @@ function validate(form) {
 	    out.println("</td><td width='20%'>");
 	    out.println("<input type='checkbox' name='cancelCheque' value='" + rs.getInt("IDOperation") + "'> Annuler");
 	    out.println("</td><td width='20%'>");
-	    out.println("<input type='checkbox' name='reportCheque' value='" + rs.getInt("IDOperation") + "'> Reporter<br>");
+	    // out.println("<input type='checkbox' name='reportCheque' value='" + rs.getInt("IDOperation") + "'> Reporter<br>");
+	    out.println("<input type='checkbox' name='reportCheque' value='" + rs.getInt("IDOperation") + "'style='display:none;'><br>");
 	    out.println("<input type='checkbox' name='chequeId' value='" + rs.getString("Label") + "' style='display:none;'>");
 	    out.println("</td></tr>");
     }

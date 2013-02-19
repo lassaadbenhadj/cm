@@ -72,7 +72,7 @@
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="CM_DS" id="474"
  extends="cm_ds_lib.CM_DS">
             <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
-            <property name="odaURL">jdbc:mysql://192.168.1.246:3306/mifos_qg</property>
+            <property name="odaURL">jdbc:mysql://192.168.1.98:3306/mifos</property>
             <property name="odaUser">root</property>
             <encrypted-property name="odaPassword" encryptionID="base64">bXlzcWw=</encrypted-property>
         </oda-data-source>
@@ -1145,13 +1145,205 @@ from cm_caisses]]></xml-property>
         <simple-master-page name="Simple MasterPage" id="2">
             <property name="type">a4</property>
             <property name="orientation">portrait</property>
-            <property name="leftMargin">0.25in</property>
             <page-header>
                 <grid id="8">
                     <list-property name="boundDataColumns">
                         <structure>
-                            <property name="name">Column Binding_1</property>
-                            <expression name="expression" type="javascript">row["Column Binding"]</expression>
+                            <property name="name">Column Binding</property>
+                            <text-property name="displayName">encryptedCode</text-property>
+                            <expression name="expression" type="javascript">var MOINS = "moins";&#13;
+var tab = Array("", MILLE, MILLION, MILLIARD, MILLE + " " + MILLIARD, MILLION + " de " + MILLIARD, MILLIARD + " de " + MILLIARD);&#13;
+&#13;
+function getChiffre(num){&#13;
+	num = Math.floor(num);&#13;
+	if((num &lt; 0) || (num > 9)){&#13;
+		alert("Un chiffre est entre 0 et 9, donc " + num + " est interdit");&#13;
+	}&#13;
+	&#13;
+	switch(num){                  &#13;
+		case 0 : return ZERO;   &#13;
+		case 1 : return UN; 	  &#13;
+		case 2 : return DEUX;   &#13;
+		case 3 : return TROIS;  &#13;
+		case 4 : return QUATRE; &#13;
+		case 5 : return CINQ;	  &#13;
+		case 6 : return SIX;	  &#13;
+		case 7 : return SEPT;	&#13;
+		case 8 : return HUIT;	&#13;
+		case 9 : return NEUF;		&#13;
+	}&#13;
+	&#13;
+	return null;&#13;
+}&#13;
+&#13;
+function paquet(p){&#13;
+	p = Math.floor(p);&#13;
+	var reponse = "";&#13;
+	&#13;
+	if(p >= 100){&#13;
+		if(p/100 > 1){&#13;
+			reponse = getChiffre(p/100)+" ";&#13;
+		} else if (p/100 == 1){&#13;
+			reponse += UN+" ";&#13;
+		}&#13;
+		&#13;
+		reponse += CENT+" ";&#13;
+		&#13;
+		p = p%100;&#13;
+	}&#13;
+	&#13;
+	var c = p/10; c = Math.floor(c);&#13;
+	var u = p%10; u = Math.floor(u);&#13;
+	&#13;
+	switch(c){&#13;
+		case 0:&#13;
+			if(u != 0){&#13;
+				reponse += getChiffre(u);&#13;
+			}&#13;
+			break;&#13;
+		case 1 : switch (u) {&#13;
+                case 0 : reponse += DIX;&#13;
+                break;&#13;
+                case 1 : reponse += ONZE;&#13;
+                break;&#13;
+                case 2 : reponse += DOUZE;&#13;
+                break;&#13;
+                case 3 : reponse += TREIZE;&#13;
+                break;&#13;
+                case 4 : reponse += QUATORZE;&#13;
+                break;&#13;
+                case 5 : reponse += QUINZE;&#13;
+                break;&#13;
+                case 6 : reponse += SEIZE;&#13;
+                break;&#13;
+              	default:&#13;
+                	reponse += DIX + " " + getChiffre(u);&#13;
+				break&#13;
+            }&#13;
+			break;&#13;
+		case 2 : reponse += VINGT;&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+	          if ( u > 0 ) reponse  += " " + getChiffre(u);&#13;
+	          break;&#13;
+	    case 3 : reponse += TRENTE;&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+&#13;
+	          if ( u > 0 ) reponse += " " + getChiffre(u);&#13;
+	          break;&#13;
+	    case 4 : reponse += QUARANTE;&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+	          if ( u > 0 ) reponse  += " " + getChiffre(u);&#13;
+	          break;&#13;
+	    case 5 : reponse += CINQUANTE;&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+	          if ( u > 0 ) reponse  += " " + getChiffre(u);&#13;
+	          break;&#13;
+	    case 6 : reponse += SOIXANTE;&#13;
+&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+	          if ( u > 0 ) reponse  += " " + getChiffre(u);&#13;
+	          break;&#13;
+	    case 7 : reponse += SOIXANTE + " ";&#13;
+	          if ( u == 1 ) reponse += " et";&#13;
+	          switch (u) {&#13;
+	              case 0 : reponse += DIX;&#13;
+	              break;&#13;
+	              case 1 : reponse += ONZE;&#13;
+	              break;&#13;
+	              case 2 : reponse += DOUZE;&#13;
+	              break;&#13;
+	              case 3 : reponse += TREIZE;&#13;
+	              break;&#13;
+	              case 4 : reponse += QUATORZE;&#13;
+	              break;&#13;
+	              case 5 : reponse += QUINZE;&#13;
+	              break;&#13;
+	              case 6 : reponse += SEIZE;&#13;
+	              break;&#13;
+	            default:&#13;
+	              reponse += DIX + " " + getChiffre(u);&#13;
+					break&#13;
+	          }&#13;
+	          break;&#13;
+	          case 8 : reponse += QUATRE + " " + VINGT;&#13;
+	          if ( u > 0 ) reponse += " " + getChiffre(u);&#13;
+	          break;&#13;
+	          case 9 : reponse += QUATRE + " " + VINGT + " ";&#13;
+	          switch (u) {&#13;
+	              case 0 : reponse += DIX;&#13;
+	              break;&#13;
+	              case 1 : reponse += ONZE;&#13;
+	              break;&#13;
+	              case 2 : reponse += DOUZE;&#13;
+	              break;&#13;
+	              case 3 : reponse += TREIZE;&#13;
+	              break;&#13;
+	              case 4 : reponse += QUATORZE;&#13;
+	              break;&#13;
+	              case 5 : reponse += QUINZE;&#13;
+	              break;&#13;
+	              case 6 : reponse += SEIZE;&#13;
+	              break;&#13;
+	              default:&#13;
+	              	reponse += DIX + " " + getChiffre(u);&#13;
+				  break;&#13;
+	          }&#13;
+	          break;&#13;
+	      }&#13;
+&#13;
+	  return trim(reponse);&#13;
+}&#13;
+&#13;
+function getLettre( l) {&#13;
+&#13;
+    if (l == 0) return ZERO;&#13;
+    &#13;
+	var signe = "";&#13;
+&#13;
+    if (l &lt; 0) {&#13;
+        l = -l;&#13;
+        signe = MOINS + " ";&#13;
+    }&#13;
+&#13;
+    var reponse = "";&#13;
+	var rang = 0;&#13;
+    while (l >= 1) {&#13;
+		var lparse = l % 1000;&#13;
+		reponse = paquet(lparse) + " " + tab[rang] + " " + reponse;&#13;
+        l = l / 1000;&#13;
+        rang++;&#13;
+    }&#13;
+&#13;
+    reponse = signe + reponse;&#13;
+&#13;
+    return trim(reponse);&#13;
+}&#13;
+&#13;
+function trans_nombre(nombre) {&#13;
+	&#13;
+	var x = nombre.indexOf(".");&#13;
+	var valLeft = nombre.substr(0, x);&#13;
+	var valRight = nombre.substr(x+1);&#13;
+	&#13;
+	if(valRight.toString().length &lt; 1){ valRight = "000"; } &#13;
+	else if (valRight.toString().length &lt; 2){ valRight += "00"; }&#13;
+	else if(valRight.toString().length &lt; 3){ valRight += "0"; }&#13;
+	&#13;
+    if ( x != -1 ) {&#13;
+		return "" + getLettre(valLeft) + " Dinars et " + getLettre(valRight) + " Millimes";&#13;
+	} else {&#13;
+      return "" + getLettre(nombre) + " Dinars ";&#13;
+&#13;
+  }&#13;
+}&#13;
+&#13;
+function trim(str) { &#13;
+    str.replace(/^\s*/, '').replace(/\s*$/, ''); &#13;
+&#13;
+   return str;&#13;
+} &#13;
+var numb = "" + dataSetRow["(select Sum(ls.PRINCIPAL+ls.INTEREST) from loan_schedule ls where ls.account_id=loan_schedule.account_id)"];&#13;
+trans_nombre(numb);</expression>
                             <property name="dataType">string</property>
                         </structure>
                     </list-property>

@@ -2,12 +2,12 @@
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.20" id="1">
     <list-property name="configVars">
         <structure>
-            <property name="name">__isdisplay__OpDate_18_0</property>
-            <property name="value">2012-06-03</property>
+            <property name="name">__isdisplay__Caisse_19_0</property>
+            <property name="value">Tadhamen</property>
         </structure>
         <structure>
-            <property name="name">__isdisplay__Caisse_19_1</property>
-            <property name="value">Tadhamen</property>
+            <property name="name">__isdisplay__OpDate_18_1</property>
+            <property name="value">2012-06-3</property>
         </structure>
         <structure>
             <property name="name">__isdisplay__rptuser_415_2</property>

@@ -35,7 +35,7 @@ if(userid==null) {
 String pageToRedirectTo=request.getParameter("pageselected") + ".jsp";
 businessRules bRules= new businessRules();
 
-if (!bRules.roles_allowed_to_enter_backdated_trxn(cmrole)&& pageToRedirectTo.equals("valider_Remboursement.jsp")){
+if (!bRules.roles_allowed_to_enter_backdated_trxn(cmrole)&& pageToRedirectTo.equals("importer_Remboursement.jsp")){
 	response.sendRedirect("main.jsp?msg=erreur_remb");
 }
 else {
@@ -99,13 +99,6 @@ if(caisseidi==0) {
 		</td>
 	      <td><input type="hidden" name="datetoSend"></td>
 	    </tr>
-	    <tr>
-		<%if (pageToRedirectTo.equals("valider_Remboursement.jsp")){
-			out.println("<td><div align='left'>Code mifos </div></td>");
-			out.println("<td><input type='text' name='codetoSend'></td>");
-		}
-		%>
-		</tr>
 	     <tr>
 	      <td>&nbsp;</td>
 	      <td>&nbsp;</td>

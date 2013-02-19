@@ -74,8 +74,8 @@ if(userid==null) {
         </select></td>
     </tr>
     <tr>
-      <td><div align="left">Matricule</div></td>
-      <td><input type='text' name="matricule"/></td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
