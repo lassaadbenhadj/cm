@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.20" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__OpDate_18_0</property>
+            <property name="value">2011-02-04</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Caisse_19_1</property>
+            <property name="value">9</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__caissier_341_2</property>
+            <property name="value">1043</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__rptuser_417_3</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">caissier_341_4</property>
+            <property name="value">1043</property>
+        </structure>
+        <structure>
+            <property name="name">caissier_341_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">rptuser_417_5</property>
+            <property name="value">1.0</property>
+        </structure>
+        <structure>
+            <property name="name">rptuser_417_type_</property>
+            <property name="value">float</property>
+        </structure>
+        <structure>
+            <property name="name">Caisse_19_6</property>
+            <property name="value">9</property>
+        </structure>
+        <structure>
+            <property name="name">Caisse_19_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">OpDate_18_7</property>
+            <property name="value">2011-02-04</property>
+        </structure>
+        <structure>
+            <property name="name">OpDate_18_type_</property>
+            <property name="value">string</property>
+        </structure>
+    </list-property>
+</report>
