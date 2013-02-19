@@ -3,6 +3,15 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<% Integer userid=(Integer) session.getAttribute("username");
+if(userid==null) {
+	String redirectURL = "login.jsp";
+    response.sendRedirect(redirectURL);
+}
+
+String thisDateSent=request.getParameter("datetoSend");
+String thisCaisseSent=request.getParameter("caissesent");
+%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Frais à problème</title>
@@ -88,6 +97,8 @@
       <td><input type="text" name="bankAccount"></td>
     </tr>
     <tr>
+   	  <td><input type="hidden" name="datetoSend_2" value=<% out.println(thisDateSent);%>></td>
+      <td><input type="hidden" name="caissesent_2" value=<% out.println(thisCaisseSent);%>></td>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
@@ -109,12 +120,7 @@
   </label>
   <label></label>
 </form>
-<% Integer userid=(Integer) session.getAttribute("username");
-if(userid==null) {
-	String redirectURL = "login.jsp";
-    response.sendRedirect(redirectURL);
-}
-%>
+
 
 </body>
 </html>
