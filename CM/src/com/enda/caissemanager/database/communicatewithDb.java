@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import com.enda.caissemanager.connection.ConnectionBase;
 import com.enda.caissemanager.connection.LienBase;
 public class communicatewithDb {
-	public void insertIndb(int loan, int user, int ttype, String tref,double amount,String lbl, int caisseprm) {
+	
+	public void insertIndb(int loan, int user, int ttype, String tref,double amount,String lbl, int caisseprm, String datePrm) {
 		Statement statement = null;
 		Connection cnxal;
 		ConnectionBase TestCnxAl = new ConnectionBase();
@@ -25,17 +26,24 @@ public class communicatewithDb {
 
 			   try
 			  {
-				   
-			  
+	
 			  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			  Date date = new Date();
 			  String transdate=dateFormat.format(date);
+				   
+			  transdate = datePrm;
+			  //if (datePrm !="1900-01-01"){
+			  //	 transdate = datePrm;
+			  //}
 			  
-			  DateFormat dateEnterdFormat = new SimpleDateFormat("HH:mm:ss");
+			  DateFormat dateEnterdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			  String dateentered=dateEnterdFormat.format(date);
 			  
+			  DateFormat timeEnterdFormat = new SimpleDateFormat("HH:mm:ss");
+			  String timeentered=timeEnterdFormat.format(date);
 			  
-		      String Sqlstr="INSERT INTO cm_trace (LoanID,TransDate,UserID,TransType,TransRef,Amount,DateEntered,TimeEntered,Label,caisse) VALUES(" + loan +",'" + transdate + "'," + user + "," + ttype + ",'" + tref + "'," + amount + ",'" + transdate + "','"+dateentered+"','" + lbl + "'," + caisseprm + ")";
+			  
+		      String Sqlstr="INSERT INTO cm_trace (LoanID,TransDate,UserID,TransType,TransRef,Amount,DateEntered,TimeEntered,Label,caisse) VALUES(" + loan +",'" + transdate + "'," + user + "," + ttype + ",'" + tref + "'," + amount + ",'" + dateentered + "','"+timeentered+"','" + lbl + "'," + caisseprm + ")";
 		      statement.executeUpdate(Sqlstr);
 		      cnxal.close();
 		      
@@ -75,8 +83,9 @@ public class communicatewithDb {
 		      String Sqlstr="SELECT * FROM cm_caisse_users WHERE LAST_ACTIVE=1 AND DATETIME_START in (select max(DATETIME_START) as D FROM cm_caisse_users " +
 		      				" WHERE USER_ID=" + persoid + ") AND USER_ID=" + persoid ;
 		      rs=statement.executeQuery(Sqlstr);
-		      rs.next();
-		      caisse= rs.getInt("CAISSE_ID");
+		      	if (rs.next()) {
+		      		caisse= rs.getInt("CAISSE_ID");
+		      	}
 		      cnxal.close();
 		      
 			  }
@@ -159,7 +168,7 @@ public class communicatewithDb {
 			  
 	}
 
-	public void dotheadjustment(int loan, int user, int ttype, String tref,double amount,String lbl, int caisseprm, int FixedTransID) {
+	public void dotheadjustment(int loan, int user, int ttype, String tref,double amount,String lbl, int caisseprm, int FixedTransID, String datePrm) {
 		Statement statement = null;
 		Connection cnxal;
 		ConnectionBase TestCnxAl = new ConnectionBase();
@@ -179,17 +188,16 @@ public class communicatewithDb {
 			   try
 			  {
 				   
-			  System.out.println(loan);
-			  
-			  DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			 
+			  DateFormat dateEnterdFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			  Date date = new Date();
-			  String transdate=dateFormat.format(date);
-			  
-			  DateFormat dateEnterdFormat = new SimpleDateFormat("HH:mm:ss");
 			  String dateentered=dateEnterdFormat.format(date);
 			  
+			  DateFormat timeEnterdFormat = new SimpleDateFormat("HH:mm:ss");
+			  String timeentered=timeEnterdFormat.format(date);
 			  
-		      String Sqlstr="INSERT INTO cm_trace (LoanID,TransDate,UserID,TransType,TransRef,Amount,DateEntered,TimeEntered,isfixed,FixedTransID,Label,caisse) VALUES(" + loan +",'" + transdate + "'," + user + "," + ttype + ",'" + tref + "'," + amount + ",'" + transdate + "','"+ dateentered +"',1," + FixedTransID + ",'" + lbl + "'," + caisseprm + ")";
+			  
+		      String Sqlstr="INSERT INTO cm_trace (LoanID,TransDate,UserID,TransType,TransRef,Amount,DateEntered,TimeEntered,isfixed,FixedTransID,Label,caisse) VALUES(" + loan +",'" + datePrm + "'," + user + "," + ttype + ",'" + tref + "'," + amount + ",'" + dateentered + "','"+ timeentered +"',1," + FixedTransID + ",'" + lbl + "'," + caisseprm + ")";
 		      statement.executeUpdate(Sqlstr);
 		      
 		      
@@ -370,7 +378,6 @@ public class communicatewithDb {
 				  System.out.println("Erreur Dans l'operation"+ e.getMessage()); 
 			   }
 	}	
-	
 	
 	
 }

@@ -23,19 +23,13 @@ public class ConnectionBase
 	{
 	    boolean statusConnexion = false;
 	    try {
-	        System.out.println("Connection au driver JDBC");
-	        Class.forName("com.mysql.jdbc.Driver").newInstance();
-	        System.out.println("Driver com.mysql.jdbc.Driver chargée");
+	          Class.forName("com.mysql.jdbc.Driver").newInstance();
 	        try {
-	          //System.out.println("Connection a la base de données");
 	          lirefichier lr=new lirefichier();
-	          //System.out.println("nok");
-	          //String dburl="jdbc:mysql://" + lr.gethostfromfile()+ ":" + lr.getportfromfile()+"/"+lr.getdbnamefromfile()+ "?user="+
-	          //lr.getuserfromfile()+"&password=" + lr.getpasswordfromfile();	
-	          cnx = DriverManager.getConnection("jdbc:mysql://192.168.1.213:3306/mifos?user=root&password=mysql");
-	          //System.out.println(dburl+"url:");
-	          //cnx = DriverManager.getConnection(dburl);
-	          //System.out.println("Base de données connectée");
+	          String dburl="jdbc:mysql://" + lr.host + ":" + lr.port+"/"+lr.dbname+ "?user="+
+	          lr.user+"&password=" + lr.password;	
+	          //cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/mifos?user=root&password=mysql");
+	          cnx = DriverManager.getConnection(dburl);
 	          //conn.close();
 	          statusConnexion = true;
 	        } catch (SQLException ex) {

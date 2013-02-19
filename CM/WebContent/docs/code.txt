@@ -1,0 +1,25 @@
+<%Iterator itr;%>
+<% List data= (List)session.getAttribute("studentlist");
+        for (itr=data.iterator(); itr.hasNext(); )
+        {
+                String value=(String)itr.next();
+                String value2=(String)itr.next();
+%>
+<tr>
+    <td><label for="student"><%=value%></label></td>
+     <td><input type="hidden" name="student" value="<%=value2%>" /><td>
+    <td><input type="text" name="grade" id="<%=value%>" /></td>
+</tr>
+<%}%>
+
+
+String[] grades = request.getParameterValues("grade");
+                String[] student = request.getParameterValues("student");
+ 
+                for(int i=0;i<student.length;i++){
+                    strQuery = "insert " +
+                                "into " +
+                                "cijfer " +
+                                "values(" +
+                                "null,"+grades[i]+",NOW(),1,'"+SubjectId+"',"+student[i]+")";
+ 

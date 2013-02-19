@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE dependencies PUBLIC "-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN" "http://java.sun.com/dtd/application_1_3.dtd">
+<dependencies>
+	<myql_jar>mysql-connector-java-5.0.4-bin.jar</myql_jar>
+	<birt_supplement>activation-1.1.1.jar</birt_supplement>
+	<birt_supplement>mail.jar</birt_supplement>
+	<file_upload>commons-fileupload-1.2.2.jar</file_upload>
+	<file_upload_supplement>commons-io-2.2.jar</file_upload_supplement></dependencies>
