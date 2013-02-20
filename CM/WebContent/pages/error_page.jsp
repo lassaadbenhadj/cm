@@ -21,6 +21,11 @@ if (cmmsg.equals("AmountValidationError")) {
 	out.println("<font color=red ><B>Le montant saisi est invalide </B></font>"); 
 
 }
+
+if (cmmsg.equals("CNameValidationError")) {
+	out.println("<font color=red ><B>Prière de saisir le nom du client </B></font>"); 
+
+}
 %>
 <head>
 

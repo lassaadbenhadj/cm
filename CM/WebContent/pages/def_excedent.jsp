@@ -57,7 +57,7 @@ String thisCaisseSent=request.getParameter("caissesent");
 </script>
 </head>
 <body>
-<form name="form1" method="post" action="commit_alimentation.jsp" onReset="window.location='main.jsp';">
+<form name="form1" method="post" action="commit_def_exced.jsp" onReset="window.location='main.jsp';">
   <label></label>
   <label><br>
   </label>
@@ -92,8 +92,8 @@ String thisCaisseSent=request.getParameter("caissesent");
       </div></td>
     </tr>
     <tr>
-      <td><div align="left">Description</div></td>
-      <td><input type="text" name="bankAccount"></td>
+      <td><div align="left">Nom client</div></td>
+      <td><input type="text" name="cltName"></td>
     </tr>
     <tr>
       <td><input type="hidden" name="datetoSend_2" value=<% out.println(thisDateSent);%>></td>

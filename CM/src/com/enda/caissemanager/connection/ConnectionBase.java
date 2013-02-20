@@ -57,7 +57,11 @@ public class ConnectionBase
 	1/ ALTER TABLE `mifos`.`cm_trace` ADD COLUMN `solde_fixed` TINYINT(1) UNSIGNED DEFAULT 0 AFTER `caisse`;
 	2/ UPDATE cm_trace set solde_fixed=0;
 	3/ ALTER TABLE `mifos`.`cm_trace` ADD COLUMN `is_cancelled` TINYINT(1) UNSIGNED AFTER `solde_fixed`;
- 
+ 	
+ 	Table: cm_reports
+ 	1/ ALTER TABLE `mifos`.`cm_reports` ADD COLUMN `REPORT_XLS` TINYINT(1) UNSIGNED NOT NULL DEFAULT 1 AFTER `REPORT_PARAM_NUM`;
+	2/ ALTER TABLE `mifos`.`cm_reports` MODIFY COLUMN `REPORT_STATUS` INTEGER UNSIGNED NOT NULL DEFAULT 1;
+	
  	db changes after commit efa05d56c77156ff04331b3a8a3cc75d40fe89cd:
 	Table: cm_trans_types
 	1/	Update cm_trans_types set TypeName ='Versement_A_La_Banque/A la poste' where  TypeName='Versement A la banque' and IDType=6
