@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.20" id="1">
+    <list-property name="configVars">
+        <structure>
+            <property name="name">__isdisplay__OpDate_18_0</property>
+            <property name="value">2013-02-20</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__Caisse_19_1</property>
+            <property name="value">Tadhamen</property>
+        </structure>
+        <structure>
+            <property name="name">__isdisplay__rptuser_415_2</property>
+            <property name="value">2006</property>
+        </structure>
+        <structure>
+            <property name="name">rptuser_415_3</property>
+            <property name="value">2006.0</property>
+        </structure>
+        <structure>
+            <property name="name">rptuser_415_type_</property>
+            <property name="value">float</property>
+        </structure>
+        <structure>
+            <property name="name">Caisse_19_4</property>
+            <property name="value">1</property>
+        </structure>
+        <structure>
+            <property name="name">Caisse_19_type_</property>
+            <property name="value">integer</property>
+        </structure>
+        <structure>
+            <property name="name">Caisse_19_expr_</property>
+            <property name="value">dataSetRow["ID"]</property>
+        </structure>
+        <structure>
+            <property name="name">OpDate_18_5</property>
+            <property name="value">2013-02-20</property>
+        </structure>
+        <structure>
+            <property name="name">OpDate_18_type_</property>
+            <property name="value">date</property>
+        </structure>
+    </list-property>
+</report>
