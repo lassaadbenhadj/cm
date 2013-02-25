@@ -64,7 +64,7 @@ public class ConnectionBase
 	
  	db changes after commit efa05d56c77156ff04331b3a8a3cc75d40fe89cd:
 	Table: cm_trans_types
-	1/	Update cm_trans_types set TypeName ='Versement_A_La_Banque/A la poste' where  TypeName='Versement A la banque' and IDType=6
+	1/	Update cm_trans_types set TypeName ='Versement_A_La_Banque/A la poste' where  TypeName='Versement A la banque' and IDType=6;
 	2/	Update cm_trans_types set PrevType = null where  PrevType=4;
 		Update cm_trans_types set PrevType = 4 where  IDType in (6,8,17);
 	Table: cm_caisses
