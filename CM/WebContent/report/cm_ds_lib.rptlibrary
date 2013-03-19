@@ -16,7 +16,7 @@
                 </ex-property>
             </list-property>
             <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
-            <property name="odaURL">jdbc:mysql://192.168.1.246:3306/mifos_qg</property>
+            <property name="odaURL">jdbc:mysql://192.168.1.246:3306/mifos</property>
             <property name="odaUser">root</property>
             <encrypted-property name="odaPassword" encryptionID="base64">bXlzcWw=</encrypted-property>
         </oda-data-source>

@@ -44,7 +44,7 @@
             </structure>
         </scalar-parameter>
         <scalar-parameter name="rptuser" id="415">
-            <property name="hidden">false</property>
+            <property name="hidden">true</property>
             <text-property name="promptText">Utilisateur</text-property>
             <property name="valueType">static</property>
             <property name="dataType">float</property>
@@ -61,7 +61,12 @@
     </parameters>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="CM_DS" id="27"
- extends="cm_ds_lib.CM_DS"/>
+ extends="cm_ds_lib.CM_DS">
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://192.168.1.246:3306/mifos</property>
+            <property name="odaUser">root</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">bXlzcWw=</encrypted-property>
+        </oda-data-source>
     </data-sources>
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="constat_caisse_DSet" id="28">

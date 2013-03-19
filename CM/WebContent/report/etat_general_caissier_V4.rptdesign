@@ -75,7 +75,7 @@
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="CM_DS" id="544"
  extends="cm_ds_lib.CM_DS">
             <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
-            <property name="odaURL">jdbc:mysql://192.168.1.246:3306/mifos_qg</property>
+            <property name="odaURL">jdbc:mysql://localhost:3306/mifos</property>
             <property name="odaUser">root</property>
             <encrypted-property name="odaPassword" encryptionID="base64">bXlzcWw=</encrypted-property>
         </oda-data-source>
@@ -1219,7 +1219,7 @@ WHERE PERSONNEL_ID=? ]]></xml-property>
                                 <property name="fontSize">16pt</property>
                                 <property name="fontWeight">bold</property>
                                 <property name="textAlign">center</property>
-                                <text-property name="text">Etat Général de la caisse</text-property>
+                                <text-property name="text">Etat Général Caissier</text-property>
                             </label>
                         </cell>
                     </row>

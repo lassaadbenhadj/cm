@@ -91,6 +91,9 @@ public class ConnectionBase
 		insert into cm_banks (bank_id,bank_name) values (51012,'BNA');
 		insert into cm_banks (bank_id,bank_name) values (51013,'BTK');
 		
+	Table: cm_trace
+	1/	ALTER TABLE `mifos`.`cm_trace` ADD INDEX `solde_fixed_idx`(`solde_fixed`)
+		ALTER TABLE `mifos`.`cm_trace` ADD INDEX `TransType_idx`(`TransType`)
 
 	*/
 	
