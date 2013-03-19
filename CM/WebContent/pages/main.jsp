@@ -18,7 +18,7 @@ if (cmmsg.equals("erreur")) {
 
 }
 if (cmmsg.equals("erreur_remb")) {
-	out.println("<font color=red ><B>Vous n'avez pas la permission pour saisir pour importer des remboursements </B></font>"); 
+	out.println("<font color=red ><B>Vous n'avez pas la permission pour saisir des transactions de caisse </B></font>"); 
 
 }
 }

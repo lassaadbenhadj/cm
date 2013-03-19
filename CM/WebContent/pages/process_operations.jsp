@@ -35,7 +35,7 @@ if(userid==null) {
 String pageToRedirectTo=request.getParameter("pageselected") + ".jsp";
 businessRules bRules= new businessRules();
 
-if (!bRules.roles_allowed_to_enter_backdated_trxn(cmrole)&& pageToRedirectTo.equals("importer_Remboursement.jsp")){
+if (!bRules.roles_allowed_to_enter_backdated_trxn(cmrole)){
 	response.sendRedirect("main.jsp?msg=erreur_remb");
 }
 else {
