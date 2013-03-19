@@ -69,17 +69,16 @@ else {
 				session.setAttribute("roleid",cm_role);
 				//insérer report de la caisse-------------------
 				if (caisse != 0) {
+					double dblAmount=0;
 					insertSolde inss= new insertSolde();
-					inss.fetchSolde(caisse);
-					int op_id =inss.sOpid;
-					double dblAmount=inss.sAmount;
+					dblAmount=inss.fetchSolde(caisse);
 					String dblabel="Report automatique de la caisse";
-					if (op_id!=0) {
+					if (dblAmount!=0) {
 						DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 						Date date = new Date();
 						String todayDate=dateFormat.format(date);
 						cdb.insertIndb(0,userId,14,"_",dblAmount,dblabel,caisse,todayDate);
-						inss.updateSoldeFixedField(op_id);
+						inss.updateSoldeFixedField(caisse);
 						out.println("<BR><font color=red ><B>Le gestionnaire de caisse a inséré automatiquement un report de la caisse de " + dblAmount + " DT </font></B>");
 						out.println("<BR><a href='main_frame.jsp'> Continuer </>");
 					}
